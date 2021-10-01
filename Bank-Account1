@@ -1,0 +1,45 @@
+from tkinter import *
+
+import os
+
+from PIL import ImageTk, Image
+
+master = Tk()
+
+master.title('Banking App')
+
+def finish_reg():
+
+    name = temp_name.get()
+
+    age = temp_age.get()
+
+    gender = temp_gender.get()
+
+    password = temp_password.get()
+
+    all_accounts = os.listdir()
+
+    if name == "" or age == "" or gender == "" or password == "":
+
+       notif.config(fg="red", text="*All fields required")
+
+       return
+
+    for name_check in all_accounts:
+
+        if name == name_check:
+
+           notif.config(fg="red", text="*Account already exists!")
+
+           return
+
+        else:
+
+             new_file = open(name, 'w')
+
+             new_file.write(name+"\n")
+
+             new_file.write(password+"\n")
+
+             new_file.write(age+"\n")
